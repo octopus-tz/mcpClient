@@ -1,3 +1,6 @@
+python -m gdrive_mcp_server.auth_setup --credentials /path/to/your/credentials.json --token /path/to/your/tokens.json
+
+
 C:\Users\tsiatsiz>curl --no-buffer -X POST http://127.0.0.1:8000/mcp/ -H "Content-Type: application/json" -H "Accept: application/json,text/event-stream" -d "{\"jsonrpc\":\"2.0\",\"method\":\"tools/list\",\"params\":{},\"id\":1}"
 event: message
 data: {"jsonrpc":"2.0","id":1,"result":{"tools":[{"name":"search_files","description":"Search for files in Google Drive.","inputSchema":{"properties":{"query":{"title":"Query","type":"string"},"page_size":{"default":10,"title":"Page Size","type":"integer"}},"required":["query"],"title":"search_filesArguments","type":"object"},"outputSchema":{"additionalProperties":true,"title":"search_filesDictOutput","type":"object"}},{"name":"get_file","description":"Get file content and metadata.","inputSchema":{"properties":{"file_id":{"title":"File Id","type":"string"}},"required":["file_id"],"title":"get_fileArguments","type":"object"},"outputSchema":{"additionalProperties":true,"title":"get_fileDictOutput","type":"object"}}]}}

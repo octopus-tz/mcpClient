@@ -19,6 +19,10 @@ SERVER_CONFIGS = {
         'transport': 'sse',
         'url': 'https://demo-day.mcp.cloudflare.com/sse',
     },
+    'local':{
+        'transport': 'streamable_http',
+        'url': 'http://127.0.0.1:8000/mcp',  # Replace with /mcp if needed
+    },
     # Add more servers here if needed
 }
 
@@ -114,13 +118,6 @@ async def handle_request(prompt, server_key):
 if __name__ == "__main__":
     # Set your desired test prompt and server
     prompt = "Uni of the aegean"
-    server_key = "weavely"  # or "cloudflare"
-
-    # Optionally add your own local MCP server
-    SERVER_CONFIGS["local"] = {
-        "transport": "streamable_http",
-        "url": "http://127.0.0.1:8000/mcp",  # Replace with /mcp if needed
-    }
     server_key = "local"
 
     # Run the async handler manually
