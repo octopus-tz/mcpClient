@@ -147,7 +147,7 @@ class GoogleDriveClient:
         }
 
 # Initialize MCP server
-mcp = FastMCP(title="MCP", stateless_http=True, host="127.0.0.1", port=8000)
+mcp = FastMCP(title="MCP", stateless_http=True, host="0.0.0.0", port=8000)
 
 @mcp.tool()
 def search_files(query: str, page_size: int = 10) -> dict[str, Any]:

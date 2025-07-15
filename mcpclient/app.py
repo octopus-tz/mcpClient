@@ -119,7 +119,7 @@ async def handle_request(prompt, server_key):
 
 if __name__ == "__main__":
     # Set your desired test prompt and server
-    prompt = "Uni of the aegean"
+    prompt = "Mitel"
     server_key = "local"
 
     # Run the async handler manually
