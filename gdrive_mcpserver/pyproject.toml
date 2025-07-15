@@ -28,8 +28,8 @@ classifiers = [
 ]
 
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [project.scripts]
 gdrive-mcp = "gdrive_mcp_server.server:main"
