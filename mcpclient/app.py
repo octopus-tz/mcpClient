@@ -1,7 +1,9 @@
 import asyncio
 import json
 import logging
+import google.generativeai as genai
 from langchain_mcp_adapters.client import MultiServerMCPClient
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -124,3 +126,10 @@ if __name__ == "__main__":
     response = asyncio.run(handle_request(prompt, server_key))
     print("Response from MCP server:")
     print(response)
+
+    genai.configure(api_key="AIzaSyCWVFRKpjFnuFICr4QdqSmJOSeSQPHP_wE")
+    #for m in genai.list_models():
+    #    print(m.name, m.supported_generation_methods)
+    model = genai.GenerativeModel("models/gemini-1.5-flash")
+    response = model.generate_content("Which are the contents of google drive folder and details?" + response)
+    print(response.text)
