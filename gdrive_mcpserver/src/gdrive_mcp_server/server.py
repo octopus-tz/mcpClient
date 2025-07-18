@@ -147,7 +147,7 @@ class GoogleDriveClient:
         }
 
 # Initialize MCP server
-mcp = FastMCP(title="MCP", stateless_http=True, host="0.0.0.0", port=8000)
+mcp = FastMCP(title="MCP", host="0.0.0.0", port=8000)
 
 @mcp.tool()
 def search_files(query: str, page_size: int = 10) -> dict[str, Any]:
@@ -172,7 +172,8 @@ def main() -> None:
 
     if args.http:
         #mcp.run()
-        mcp.run(transport='streamable-http') #transport='streamable-http'
+        mcp.run(transport='sse') #transport='streamable-http'
+        
     else:
         mcp.run(transport="stdio")
 
