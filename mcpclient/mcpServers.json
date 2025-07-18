@@ -1,0 +1,14 @@
+{
+  "weavely": {
+    "transport": "sse",
+    "url": "https://mcp.weavely.ai/sse"
+  },
+  "cloudflare": {
+    "transport": "sse",
+    "url": "https://demo-day.mcp.cloudflare.com/sse"
+  },
+  "gdrive": {
+    "transport": "sse",
+    "url": "http://18.206.169.149:8000/sse"
+  }
+}

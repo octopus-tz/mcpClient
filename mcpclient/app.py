@@ -12,21 +12,13 @@ logger = logging.getLogger(__name__)
 mcp_clients = {}
 
 # Define available MCP servers
-SERVER_CONFIGS = {
-    'weavely': {
-        'transport': 'sse',
-        'url': 'https://mcp.weavely.ai/sse',
-    },
-    'cloudflare': {
-        'transport': 'sse',
-        'url': 'https://demo-day.mcp.cloudflare.com/sse',
-    },
-    'local':{
-        'transport': 'streamable_http',
-        'url': 'http://127.0.0.1:8000/mcp',  # Replace with /mcp if needed
-    },
-    # Add more servers here if needed
-}
+# Load server configs once
+def load_server_configs(path='mcpServers.json'):
+    with open(path, 'r') as f:
+        return json.load(f)
+
+# Lazy-load the config only once
+SERVER_CONFIGS = load_server_configs()
 
 def get_mcp_client(server_key):
     if server_key not in SERVER_CONFIGS:
@@ -116,11 +108,14 @@ async def handle_request(prompt, server_key):
 
     return json.dumps({"result": result})
 
-
+async def load_mcp_servers(path='mcp_servers.json'):
+    with open(path, 'r') as f:
+        return json.load(f)
+    
 if __name__ == "__main__":
     # Set your desired test prompt and server
     prompt = "Mitel"
-    server_key = "local"
+    server_key = "gdrive"
 
     # Run the async handler manually
     response = asyncio.run(handle_request(prompt, server_key))
